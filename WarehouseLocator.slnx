@@ -5,4 +5,5 @@
     <Project Path="src/WarehouseLocator.Domain/WarehouseLocator.Domain.csproj" />
     <Project Path="src/WarehouseLocator.Infrastructure/WarehouseLocator.Infrastructure.csproj" />
   </Folder>
+  <Project Path="tests/WarehouseLocator.Domain.Tests/WarehouseLocator.Domain.Tests.csproj" Id="055fe58e-6a21-4bfd-b357-74443cae6e8d" />
 </Solution>
