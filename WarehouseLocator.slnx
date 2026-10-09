@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/WarehouseLocator.Api/WarehouseLocator.Api.csproj" />
+    <Project Path="src/WarehouseLocator.Application/WarehouseLocator.Application.csproj" />
+    <Project Path="src/WarehouseLocator.Domain/WarehouseLocator.Domain.csproj" />
+    <Project Path="src/WarehouseLocator.Infrastructure/WarehouseLocator.Infrastructure.csproj" />
+  </Folder>
+</Solution>
