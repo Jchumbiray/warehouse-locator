@@ -32,4 +32,19 @@ public class LocationTests
         Assert.Equal(LocationStatus.Partial, location.Status);
     }
 
+
+
+    [Fact]
+    public void LocationAtFullCapacity_IsFull()
+    {
+        // Arrange
+        var location = new Location("A-01-03", 100);
+
+        // Act
+        location.AddUnits(100);
+
+        // Assert
+        Assert.Equal(LocationStatus.Full, location.Status);
+    }
+
 }

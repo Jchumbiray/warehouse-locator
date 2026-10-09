@@ -28,7 +28,10 @@
                 {
                     return LocationStatus.Available;
                 }
-
+                if (Units == Capacity)
+                {
+                    return LocationStatus.Full;
+                }
                 return LocationStatus.Partial; 
             }
         }
