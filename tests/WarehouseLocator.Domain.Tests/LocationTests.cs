@@ -139,4 +139,18 @@ public class LocationTests
     }
 
 
+
+
+
+    [Fact]
+    public void MoveUnitsTo_SameLocation_Throws()
+    {
+        var location = new Location("A-01-03", 100);
+        location.AddUnits(30);
+        Assert.Throws<InvalidOperationException>(() => location.MoveUnitsTo(location, 10));
+    }
+
+
+
+
 }

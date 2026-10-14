@@ -40,6 +40,22 @@
             Units -= quantity;
         }
 
+
+
+
+        public void MoveUnitsTo(Location destination, int quantity)
+        {
+            if (this == destination)
+            {
+                throw new InvalidOperationException("Origin and destination must be different locations.");
+            }
+
+            RemoveUnits(quantity);
+            destination.AddUnits(quantity);
+        }
+
+
+
         // 2) El método (junto a AddUnits)
         public void Block()
         {
