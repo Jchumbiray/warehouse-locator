@@ -33,7 +33,10 @@
             Units += quantity;
         }
 
-
+        public void RemoveUnits(int quantity)
+        {
+            Units -= quantity;
+        }
 
         // 2) El método (junto a AddUnits)
         public void Block()

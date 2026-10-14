@@ -90,5 +90,15 @@ public class LocationTests
     }
 
 
+    [Fact]
+    public void RemoveUnits_ReducesUnits()
+    {
+        var location = new Location("A-01-03", 100);
+        location.AddUnits(50);
+
+        location.RemoveUnits(20);
+
+        Assert.Equal(30, location.Units);
+    }
 
 }
