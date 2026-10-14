@@ -47,4 +47,28 @@ public class LocationTests
         Assert.Equal(LocationStatus.Full, location.Status);
     }
 
+
+    [Fact]
+    public void BlockedLocation_IsBlocked()
+    {
+        var location = new Location("A-01-03", 100);
+
+        location.Block();
+
+        Assert.Equal(LocationStatus.Blocked, location.Status);
+    }
+
+
+
+    [Fact]
+    public void AddUnits_ToBlockedLocation_Throws()
+    {
+        var location = new Location("A-01-03", 100);
+        location.Block();
+
+        Assert.Throws<InvalidOperationException>(() => location.AddUnits(10));
+    }
+
+
+
 }

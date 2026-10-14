@@ -5,6 +5,9 @@
         public string Code { get;  }
         public int Capacity { get;  }
 
+        // 1) Un campo que recuerde si está bloqueada (junto a Units)
+        private bool _isBlocked;
+
         public Location( string code, int capacity)
         {
             Code = code;
@@ -15,15 +18,32 @@
         public int Units { get; private set; }
         public void AddUnits (int quantity)
         {
+
+            if (_isBlocked)
+            {
+                throw new InvalidOperationException("Cannot add units to a blocked location.");
+            }
+
             Units += quantity;
         }
 
+
+
+        // 2) El método (junto a AddUnits)
+        public void Block()
+        {
+            _isBlocked = true;
+        }
 
 
         public LocationStatus Status
         {
             get
             {
+                if (_isBlocked)
+                {
+                    return LocationStatus.Blocked;
+                }
                 if (Units ==0)
                 {
                     return LocationStatus.Available;
@@ -31,7 +51,7 @@
                 if (Units == Capacity)
                 {
                     return LocationStatus.Full;
-                }
+                }                
                 return LocationStatus.Partial; 
             }
         }
