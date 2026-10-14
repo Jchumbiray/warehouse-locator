@@ -18,16 +18,13 @@
         public int Units { get; private set; }
         public void AddUnits (int quantity)
         {
-            if (quantity <= 0)
-            {
-                throw new ArgumentException("Quantity must be greater than zero.");
-            }
+            ValidateQuantity(quantity);
             if (_isBlocked)
             {
                 throw new InvalidOperationException("Cannot add units to a blocked location.");
             }
             if (Units + quantity > Capacity)
-{
+            {
                 throw new InvalidOperationException("Quantity exceeds location capacity.");
             }
             Units += quantity;
@@ -35,12 +32,9 @@
 
         public void RemoveUnits(int quantity)
         {
-            if (quantity <= 0)
-            {
-                throw new ArgumentException("Quantity must be greater than zero.");
-            }
+            ValidateQuantity(quantity);
             if (quantity > Units)
-{
+            {
                 throw new InvalidOperationException("Cannot remove more units than available.");
             }
             Units -= quantity;
@@ -71,7 +65,25 @@
                 }                
                 return LocationStatus.Partial; 
             }
+
+        }
+
+
+
+
+        private static void ValidateQuantity(int quantity)
+        {
+            if (quantity <= 0)
+            {
+                throw new ArgumentException("Quantity must be greater than zero.");
+            }
         }
 
     }
+
+
+
+
+
+
 }
