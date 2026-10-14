@@ -166,4 +166,21 @@ public class LocationTests
         Assert.Equal(30, origin.Units);
     }
 
+
+
+
+
+    [Fact]
+    public void MoveUnitsTo_DestinationWithoutSpace_Throws_AndKeepsOriginUnits()
+    {
+        var origin = new Location("A-01-03", 100);
+        origin.AddUnits(30);
+        var destination = new Location("B-02-01", 50);
+        destination.AddUnits(45);
+
+        Assert.Throws<InvalidOperationException>(() => origin.MoveUnitsTo(destination, 6));
+        Assert.Equal(30, origin.Units);
+    }
+
+
 }

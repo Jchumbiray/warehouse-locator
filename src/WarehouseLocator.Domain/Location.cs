@@ -53,6 +53,10 @@
             {
                 throw new InvalidOperationException("Destination location is blocked.");
             }
+            if (destination.Units + quantity > destination.Capacity)
+{
+                throw new InvalidOperationException("Destination location does not have enough space.");
+            }
             RemoveUnits(quantity);
             destination.AddUnits(quantity);
         }
