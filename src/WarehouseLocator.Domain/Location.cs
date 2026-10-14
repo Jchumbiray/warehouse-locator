@@ -35,6 +35,10 @@
 
         public void RemoveUnits(int quantity)
         {
+            if (quantity <= 0)
+            {
+                throw new ArgumentException("Quantity must be greater than zero.");
+            }
             if (quantity > Units)
 {
                 throw new InvalidOperationException("Cannot remove more units than available.");

@@ -112,4 +112,31 @@ public class LocationTests
         Assert.Throws<InvalidOperationException>(() => location.RemoveUnits(50));
     }
 
+
+
+    [Fact]
+    public void RemoveUnits_FromBlockedLocation_IsAllowed()
+    {
+        var location = new Location("A-01-03", 100);
+        location.AddUnits(40);
+        location.Block();
+
+        location.RemoveUnits(10);
+
+        Assert.Equal(30, location.Units);
+    }
+
+
+    [Theory]
+    [InlineData(0)]
+    [InlineData(-5)]
+    public void RemoveUnits_WithZeroOrNegativeQuantity_Throws(int quantity)
+    {
+        var location = new Location("A-01-03", 100);
+        location.AddUnits(30);
+
+        Assert.Throws<ArgumentException>(() => location.RemoveUnits(quantity));
+    }
+
+
 }
