@@ -35,6 +35,10 @@
 
         public void RemoveUnits(int quantity)
         {
+            if (quantity > Units)
+{
+                throw new InvalidOperationException("Cannot remove more units than available.");
+            }
             Units -= quantity;
         }
 

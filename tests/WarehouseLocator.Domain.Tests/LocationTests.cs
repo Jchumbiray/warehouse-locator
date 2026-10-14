@@ -101,4 +101,15 @@ public class LocationTests
         Assert.Equal(30, location.Units);
     }
 
+
+
+    [Fact]
+    public void RemoveUnits_MoreThanAvailable_Throws()
+    {
+        var location = new Location("A-01-03", 100);
+        location.AddUnits(30);
+
+        Assert.Throws<InvalidOperationException>(() => location.RemoveUnits(50));
+    }
+
 }
