@@ -183,4 +183,19 @@ public class LocationTests
     }
 
 
+
+    [Fact]
+    public void MoveUnitsTo_ValidMove_TransfersUnits()
+    {
+        var origin = new Location("A-01-03", 100);
+        origin.AddUnits(30);
+        var destination = new Location("B-02-01", 100);
+
+        origin.MoveUnitsTo(destination, 10);
+
+        Assert.Equal(20, origin.Units);
+        Assert.Equal(10, destination.Units);
+    }
+
+
 }
