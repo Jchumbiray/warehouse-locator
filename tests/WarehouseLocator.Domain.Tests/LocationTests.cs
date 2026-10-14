@@ -153,4 +153,17 @@ public class LocationTests
 
 
 
+
+    [Fact]
+    public void MoveUnitsTo_BlockedDestination_Throws_AndKeepsOriginUnits()
+    {
+        var origin = new Location("A-01-03", 100);
+        origin.AddUnits(30);
+        var destination = new Location("B-02-01", 100);
+        destination.Block();
+
+        Assert.Throws<InvalidOperationException>(() => origin.MoveUnitsTo(destination, 10));
+        Assert.Equal(30, origin.Units);
+    }
+
 }

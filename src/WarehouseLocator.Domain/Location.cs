@@ -49,7 +49,10 @@
             {
                 throw new InvalidOperationException("Origin and destination must be different locations.");
             }
-
+            if (destination._isBlocked)
+            {
+                throw new InvalidOperationException("Destination location is blocked.");
+            }
             RemoveUnits(quantity);
             destination.AddUnits(quantity);
         }
