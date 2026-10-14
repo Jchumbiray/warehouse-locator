@@ -69,14 +69,14 @@ public class LocationTests
         Assert.Throws<InvalidOperationException>(() => location.AddUnits(10));
     }
 
-
-
-    [Fact]
-    public void AddUnits_WithZeroOrNegativeQuantity_Throws()
+    [Theory]
+    [InlineData(0)]
+    [InlineData(-5)]
+    public void AddUnits_WithZeroOrNegativeQuantity_Throws(int quantity)
     {
         var location = new Location("A-01-03", 100);
 
-        Assert.Throws<ArgumentException>(() => location.AddUnits(0));
+        Assert.Throws<ArgumentException>(() => location.AddUnits(quantity));
     }
 
 
