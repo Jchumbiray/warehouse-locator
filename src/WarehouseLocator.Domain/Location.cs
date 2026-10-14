@@ -26,7 +26,10 @@
             {
                 throw new InvalidOperationException("Cannot add units to a blocked location.");
             }
-
+            if (Units + quantity > Capacity)
+{
+                throw new InvalidOperationException("Quantity exceeds location capacity.");
+            }
             Units += quantity;
         }
 

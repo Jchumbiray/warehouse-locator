@@ -80,4 +80,15 @@ public class LocationTests
     }
 
 
+    [Fact]
+    public void AddUnits_ExceedingCapacity_Throws()
+    {
+        var location = new Location("A-01-03", 100);
+        location.AddUnits(90);
+
+        Assert.Throws<InvalidOperationException>(() => location.AddUnits(20));
+    }
+
+
+
 }
