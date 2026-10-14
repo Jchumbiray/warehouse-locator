@@ -18,7 +18,10 @@
         public int Units { get; private set; }
         public void AddUnits (int quantity)
         {
-
+            if (quantity <= 0)
+            {
+                throw new ArgumentException("Quantity must be greater than zero.");
+            }
             if (_isBlocked)
             {
                 throw new InvalidOperationException("Cannot add units to a blocked location.");

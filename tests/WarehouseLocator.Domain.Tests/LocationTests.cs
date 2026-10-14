@@ -71,4 +71,13 @@ public class LocationTests
 
 
 
+    [Fact]
+    public void AddUnits_WithZeroOrNegativeQuantity_Throws()
+    {
+        var location = new Location("A-01-03", 100);
+
+        Assert.Throws<ArgumentException>(() => location.AddUnits(0));
+    }
+
+
 }
