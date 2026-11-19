@@ -11,4 +11,17 @@ public class LocationCodeTests
 
         Assert.Equal("A-01-03", code.Value);
     }
+
+
+
+
+    [Theory]
+    [InlineData("")]
+    [InlineData("hola")]
+    [InlineData("A-1-3")]
+    public void Create_WithInvalidFormat_Throws(string value)
+    {
+        Assert.Throws<ArgumentException>(() => new LocationCode(value));
+    }
+
 }
