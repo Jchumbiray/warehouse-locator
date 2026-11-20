@@ -198,4 +198,10 @@ public class LocationTests
     }
 
 
+    [Fact]
+    public void NewLocation_WithInvalidCode_Throws()
+    {
+        Assert.Throws<ArgumentException>(() => new Location("hola", 100));
+    }
+
 }

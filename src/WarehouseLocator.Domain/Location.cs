@@ -2,7 +2,7 @@
 {
     public class Location
     {
-        public string Code { get;  }
+        public LocationCode Code { get;  }
         public int Capacity { get;  }
 
         // 1) Un campo que recuerde si está bloqueada (junto a Units)
@@ -10,7 +10,7 @@
 
         public Location( string code, int capacity)
         {
-            Code = code;
+            Code = new LocationCode(code);
             Capacity = capacity;
         }
 
@@ -54,7 +54,7 @@
                 throw new InvalidOperationException("Destination location is blocked.");
             }
             if (destination.Units + quantity > destination.Capacity)
-{
+            {
                 throw new InvalidOperationException("Destination location does not have enough space.");
             }
             RemoveUnits(quantity);
@@ -102,11 +102,10 @@
             }
         }
 
+
+
+
+
     }
-
-
-
-
-
 
 }
