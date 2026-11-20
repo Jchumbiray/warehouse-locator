@@ -66,7 +66,7 @@ public class LocationTests
         var location = new Location("A-01-03", 100);
         location.Block();
 
-        Assert.Throws<InvalidOperationException>(() => location.AddUnits(10));
+        Assert.Throws<DomainException>(() => location.AddUnits(10));
     }
 
     [Theory]
@@ -86,7 +86,7 @@ public class LocationTests
         var location = new Location("A-01-03", 100);
         location.AddUnits(90);
 
-        Assert.Throws<InvalidOperationException>(() => location.AddUnits(20));
+        Assert.Throws<DomainException>(() => location.AddUnits(20));
     }
 
 
@@ -109,7 +109,7 @@ public class LocationTests
         var location = new Location("A-01-03", 100);
         location.AddUnits(30);
 
-        Assert.Throws<InvalidOperationException>(() => location.RemoveUnits(50));
+        Assert.Throws<DomainException>(() => location.RemoveUnits(50));
     }
 
 
@@ -147,7 +147,7 @@ public class LocationTests
     {
         var location = new Location("A-01-03", 100);
         location.AddUnits(30);
-        Assert.Throws<InvalidOperationException>(() => location.MoveUnitsTo(location, 10));
+        Assert.Throws<DomainException>(() => location.MoveUnitsTo(location, 10));
     }
 
 
@@ -162,7 +162,7 @@ public class LocationTests
         var destination = new Location("B-02-01", 100);
         destination.Block();
 
-        Assert.Throws<InvalidOperationException>(() => origin.MoveUnitsTo(destination, 10));
+        Assert.Throws<DomainException>(() => origin.MoveUnitsTo(destination, 10));
         Assert.Equal(30, origin.Units);
     }
 
@@ -178,7 +178,7 @@ public class LocationTests
         var destination = new Location("B-02-01", 50);
         destination.AddUnits(45);
 
-        Assert.Throws<InvalidOperationException>(() => origin.MoveUnitsTo(destination, 6));
+        Assert.Throws<DomainException>(() => origin.MoveUnitsTo(destination, 6));
         Assert.Equal(30, origin.Units);
     }
 

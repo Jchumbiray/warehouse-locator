@@ -21,11 +21,11 @@
             ValidateQuantity(quantity);
             if (_isBlocked)
             {
-                throw new InvalidOperationException("Cannot add units to a blocked location.");
+                throw new DomainException("Cannot add units to a blocked location.");
             }
             if (Units + quantity > Capacity)
             {
-                throw new InvalidOperationException("Quantity exceeds location capacity.");
+                throw new DomainException("Quantity exceeds location capacity.");
             }
             Units += quantity;
         }
@@ -35,7 +35,7 @@
             ValidateQuantity(quantity);
             if (quantity > Units)
             {
-                throw new InvalidOperationException("Cannot remove more units than available.");
+                throw new DomainException("Cannot remove more units than available.");
             }
             Units -= quantity;
         }
@@ -47,15 +47,15 @@
         {
             if (this == destination)
             {
-                throw new InvalidOperationException("Origin and destination must be different locations.");
+                throw new DomainException("Origin and destination must be different locations.");
             }
             if (destination._isBlocked)
             {
-                throw new InvalidOperationException("Destination location is blocked.");
+                throw new DomainException("Destination location is blocked.");
             }
             if (destination.Units + quantity > destination.Capacity)
             {
-                throw new InvalidOperationException("Destination location does not have enough space.");
+                throw new DomainException("Destination location does not have enough space.");
             }
             RemoveUnits(quantity);
             destination.AddUnits(quantity);
