@@ -24,4 +24,15 @@ public class LocationCodeTests
         Assert.Throws<ArgumentException>(() => new LocationCode(value));
     }
 
+
+    [Fact]
+    public void TwoCodesWithSameValue_AreEqual()
+    {
+        var first = new LocationCode("A-01-03");
+        var second = new LocationCode("A-01-03");
+
+        Assert.Equal(first, second);
+    }
+
+
 }
