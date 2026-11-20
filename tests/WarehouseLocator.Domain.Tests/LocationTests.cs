@@ -204,4 +204,16 @@ public class LocationTests
         Assert.Throws<ArgumentException>(() => new Location("hola", 100));
     }
 
+
+
+    [Fact]
+    public void NewLocation_KeepsItsCode()
+    {
+        var location = new Location("A-01-03", 100);
+
+        Assert.Equal("A-01-03", location.Code.Value);
+    }
+
+
+
 }
